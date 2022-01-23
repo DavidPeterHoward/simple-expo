@@ -1,5 +1,5 @@
 {
-  "name": "simple-auth",
+  "name": "csenspay",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,16 +9,141 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.5",
+    "@apollo/react-hooks": "^4.0.0",
+    "@ethersproject/shims": "^5.5.0",
+    "@expo/vector-icons": "^12.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@haskkor/react-native-pincode": "^1.22.6",
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/core": "^6.1.0",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
+    "@types/": "react-navigation/native",
+    "@types/react-fontawesome": "^1.6.5",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "apollo3-cache-persist": "^0.13.0",
+    "date-fns": "^2.25.0",
+    "ethers": "^5.5.1",
     "expo": "~44.0.2",
+    "expo-constants": "~13.0.1",
+    "expo-font": "~10.0.4",
+    "expo-network": "~4.1.0",
+    "expo-random": "~12.1.1",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
+    "native-base": "^3.2.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "^7.20.5",
     "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+    "react-native-aes-crypto": "^2.0.0",
+    "react-native-barcode-mask": "^1.2.4",
+    "react-native-crypto-js": "^1.0.0",
+    "react-native-date-picker": "^4.1.1",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-get-random-values": "~1.7.0",
+    "react-native-google-places-autocomplete": "^2.4.1",
+    "react-native-image-crop-picker": "^0.37.2",
+    "react-native-keychain": "^8.0.0",
+    "react-native-reanimated": "1.13.3",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0",
+    "react-native-svg": "12.1.1",
+    "react-native-web": "0.17.1",
+    "realm": "^10.10.1",
+    "realm-web": "^1.5.1",
+    "styled-components": "^5.3.3",
+    "styled-system": "^5.1.5",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@shopify/eslint-plugin": "^40.4.0",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "@types/enzyme": "^3.10.10",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
+    "@types/styled-components": "^5.1.15",
+    "@types/styled-components-react-native": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^5.3.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-preset-expo": "8.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "eslint": "^7.30.0",
+    "eslint-config-expo": "^6.0.0",
+    "eslint-config-labrys": "^0.6.5",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.3.1",
+    "jest-expo": "^42.0.0",
+    "jest-expo-enzyme": "^1.2.1",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "~4.4.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-labrys",
+      "plugin:jest/recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "jest"
+    ],
+    "rules": {
+      "react/jsx-pascal-case": 0,
+      "camelcase": [
+        "warn",
+        {
+          "ignoreDestructuring": true
+        }
+      ],
+      "@typescript-eslint/camelcase": "off",
+      "@typescript-eslint/no-unused-vars": 0,
+      "import/no-anonymous-default-export": "off",
+      "import/order": 0,
+      "no-console": "off"
+    },
+    "ignorePatterns": [
+      "src/Realm.ts",
+      "**/*.config.js",
+      "setupTests.js",
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.test.native.ts",
+      "**/*.test.native.tsx"
+    ]
+  },
+  "jest": {
+    "preset": "jest-expo-enzyme",
+    "setupFiles": [
+      "./setupTests.js"
+    ]
   },
   "private": true
 }

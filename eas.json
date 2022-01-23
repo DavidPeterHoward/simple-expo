@@ -1,0 +1,79 @@
+{
+    "build": {
+        "base": {
+            "android": {
+                "node": "14.17.0"
+            },
+            "ios": {
+                "node": "14.17.0"
+            }
+        },
+        "release": {},
+        "devclient": {
+            "extends": "base",
+            "distribution": "internal",
+            "ios": {
+                "enterpriseProvisioning": "adhoc",
+                "autoIncrement": true
+            },
+            "android": {
+                "gradleCommand": ":app:assembleRelease",
+                "autoIncrement": true
+            }
+        },
+        "development": {
+            "extends": "base",
+            "distribution": "internal",
+            "android": {
+                "buildType": "apk",
+                "gradleCommand": ":app:assembleDebug"
+            },
+            "ios": {
+                "simulator": true,
+                "buildConfiguration": "Debug"
+            }
+        },
+        "dev-david": {
+            "extends": "base",
+            "distribution": "internal",
+            "releaseChannel": "dev-david",
+            "android": {
+                "buildType": "apk",
+                "gradleCommand": ":app:assembleRelease"
+            },
+            "ios": {
+                "simulator": true,
+                "buildConfiguration": "Debug"
+            }
+        },
+        "staging": {
+            "extends": "base",
+            "distribution": "internal",
+            "releaseChannel": "staging",
+            "android": {
+                "gradleCommand": ":app:assembleRelease",
+                "autoIncrement": true
+            }
+        },
+        "devstaging": {
+            "extends": "base",
+            "distribution": "internal",
+            "releaseChannel": "devstaging",
+            "ios": {
+                "enterpriseProvisioning": "adhoc",
+                "autoIncrement": true
+            },
+            "android": {
+                "gradleCommand": ":app:assembleRelease",
+                "autoIncrement": true
+            }
+        }
+    },
+    "submit": {
+        "release": {}
+    },
+    "cli": {
+        "version": ">= 0.38.3",
+        "requireCommit": true
+    }
+}
